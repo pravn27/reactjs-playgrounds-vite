@@ -40,3 +40,16 @@
 .read-the-docs {
   color: #888;
 }
+
+button.btnClass {
+  background-color: #61dafb;
+  border: none;
+  color: white;
+  padding: 1em 2em;
+  text-align: center;
+  text-decoration: none;
+  display: inline-block;
+  font-size: 26px;
+  margin: 4px 2px;
+  cursor: pointer;
+}
