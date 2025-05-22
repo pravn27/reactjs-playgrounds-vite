@@ -1,31 +1,20 @@
+import { useState } from "react";
 import "./App.css";
-// import MyButton from "./component/MyButton.jsx";
-// import UserCard from "./component/UserCard.jsx";
-function App() {
-  const products = [
-    { title: "Cabbage", isFruit: false, id: 1 },
-    { title: "Garlic", isFruit: false, id: 2 },
-    { title: "Apple", isFruit: true, id: 3 },
-  ];
+import Counter from "./component/Counter.jsx";
 
-  const renderProductLists = products.map((product) => {
-    return (
-      <li key={product.id}>
-        <h2
-          style={{
-            color: product.isFruit ? "red" : "green",
-          }}
-        >
-          {product.title}
-        </h2>
-      </li>
-    );
-  });
+function App() {
+  const [count, setCount] = useState(0);
+
+  const btnClickHandler = () => {
+    setCount((prevCount) => prevCount + 1);
+    console.log("Button clicked");
+  };
 
   return (
     <>
       <h1>Welcome to React</h1>
-      <ul>{renderProductLists}</ul>
+      <Counter count={count} btnClickHandler={btnClickHandler} />
+      <Counter count={count} btnClickHandler={btnClickHandler} />
     </>
   );
 }

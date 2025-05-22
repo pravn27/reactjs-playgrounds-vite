@@ -1,7 +1,13 @@
 const MyButton = ({ name }) => {
+  const btnClickHandler = (e) => {
+    console.log("Button clicked", e);
+  };
+
   return (
     <>
-      <button className="btnClass"> {name} </button>
+      <button className="btnClass" onClick={btnClickHandler}>
+        {name}
+      </button>
     </>
   );
 };
