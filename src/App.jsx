@@ -1,20 +1,11 @@
-import { useState } from "react";
 import "./App.css";
-import Counter from "./component/Counter.jsx";
-
+// import Counter from "./component/Counter.jsx";
+import TicTacToe from "./tic-tac-game/TicTacToe.jsx";
 function App() {
-  const [count, setCount] = useState(0);
-
-  const btnClickHandler = () => {
-    setCount((prevCount) => prevCount + 1);
-    console.log("Button clicked");
-  };
-
   return (
     <>
-      <h1>Welcome to React</h1>
-      <Counter count={count} btnClickHandler={btnClickHandler} />
-      <Counter count={count} btnClickHandler={btnClickHandler} />
+      <h1>Welcome to React - Tic Tac game</h1>
+      <TicTacToe />
     </>
   );
 }
