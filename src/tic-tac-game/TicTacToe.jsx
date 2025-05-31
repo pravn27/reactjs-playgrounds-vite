@@ -1,10 +1,10 @@
-import Board from "./components/Board";
+import Game from "./components/Game";
 import "./style.css";
 
 const TicTacToe = () => {
   return (
     <>
-      <Board />
+      <Game />
     </>
   );
 };

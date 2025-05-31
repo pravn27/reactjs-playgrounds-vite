@@ -1,12 +1,8 @@
-import { useState } from "react";
 import Square from "./Square.jsx";
 
-const Board = () => {
-  const [xIsNext, setXIsNext] = useState(true);
-  const [squares, setSquares] = useState(Array(9).fill(null));
-
+const Board = ({ xIsNext, squares, onPlay }) => {
   const onSquareClickHandler = (index) => {
-    if (squares[index]) {
+    if (calculateWinner(squares) || squares[index]) {
       return; // Ignore click if square is already filled
     }
 
@@ -16,12 +12,20 @@ const Board = () => {
     } else {
       nextSquares[index] = "O";
     }
-    setSquares(nextSquares);
-    setXIsNext(!xIsNext);
+    onPlay(nextSquares); // Call the onPlay function to update the game state
   };
+
+  const winner = calculateWinner(squares);
+  let status;
+  if (winner) {
+    status = "Winner: " + winner;
+  } else {
+    status = "Next player: " + (xIsNext ? "X" : "O");
+  }
 
   return (
     <>
+      <div className="status">{status}</div>
       <div className="board-row">
         <Square
           value={squares[0]}
@@ -69,3 +73,25 @@ const Board = () => {
 };
 
 export default Board;
+
+// Function to calculate the winner of the Tic Tac Toe game
+function calculateWinner(squares) {
+  // possible winning combinations in squares 3*3 grid
+  const lines = [
+    [0, 1, 2],
+    [3, 4, 5],
+    [6, 7, 8],
+    [0, 3, 6],
+    [1, 4, 7],
+    [2, 5, 8],
+    [0, 4, 8],
+    [2, 4, 6],
+  ];
+  for (let i = 0; i < lines.length; i++) {
+    const [a, b, c] = lines[i];
+    if (squares[a] && squares[a] === squares[b] && squares[a] === squares[c]) {
+      return squares[a];
+    }
+  }
+  return null;
+}
